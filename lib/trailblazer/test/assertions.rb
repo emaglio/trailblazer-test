@@ -22,6 +22,7 @@ module Trailblazer
       # @param options Hash Default :reader is `asserted.{name}`,
       def assert_exposes(asserted, tuples, reader: nil)
         tuples.each do |k, v|
+          next unless asserted.is_a?(Hash) || asserted.respond_to?(k) # virtual attribute
           actual          = Test.actual(asserted, reader, k)
           expected, is_eq = Test.expected(asserted, v, actual)
 

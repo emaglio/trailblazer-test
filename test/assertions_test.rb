@@ -100,4 +100,18 @@ class AssertionsTest < Minitest::Spec
 
     assert_equal [["Timebomb", "__Timebomb__", "Property [title] mismatch"], ["Rancid", "__Rancid__", "Property [band] mismatch"]], test.()
   end
+
+  it 'virtual attributes' do
+    test =
+      Class.new(Test) do
+        let(:model) { Struct.new(:title, :band).new("__Timebomb__", "__Rancid__") }
+
+        it do
+          assert_exposes model, title: "Timebomb", not_existing_method: "NOFX"
+        end
+      end.
+      new(:test_0001_anonymous) # Note: this has to be that name, otherwise the test case won't be run!
+
+    assert_equal [["Timebomb", "__Timebomb__", "Property [title] mismatch"]], test.()
+  end
 end
