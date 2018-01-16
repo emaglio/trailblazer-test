@@ -13,6 +13,7 @@ module Trailblazer
     end
 
     module Assertions
+      include TestEnv
       module_function
         # tuples = defaults.merge(overrides) # FIXME: merge with above!
 

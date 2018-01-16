@@ -6,6 +6,7 @@ module Trailblazer
   end
 end
 
+require "trailblazer/test/test_env"
 require "trailblazer/test/assertions"
 require "trailblazer/test/helper"
 require "trailblazer/test/operation/assertions"

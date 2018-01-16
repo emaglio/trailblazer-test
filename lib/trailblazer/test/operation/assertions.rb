@@ -1,5 +1,6 @@
 module Trailblazer::Test::Operation
   module Assertions
+    include Trailblazer::Test::TestEnv
     # @needs params_pass
     # @needs attributes_pass
     def assert_pass(operation_class, params, expected_attributes, default_params: params_pass, default_attributes: attrs_pass, &block)
